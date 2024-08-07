@@ -1,29 +1,30 @@
 import React from 'react'
 import "./Card.css"
+import { CompanySearch } from '../../company';
 
-interface Props {
-    companyName: string;
-    ticker: string;
-    price: number;
+interface Props
+{
+    id: string;
+    searchResult: CompanySearch;
 }
 
 const Card: React.FC<Props> = ({
-    companyName,
-    ticker,
-    price
-}: Props): JSX.Element => {
+    id,
+    searchResult
+}: Props): JSX.Element =>
+{
     return (
         <div className="card">
             <img
-                src="https://images.unsplash.com/photo-1612428978260-2b9c7df2015"
-                alt="Image"
+
+                alt="Company logo"
             />
             <div className="details">
-                <h2>{companyName} ({ticker})</h2>
-                <p>${price}</p>
+                <h2>{searchResult.name} ({searchResult.symbol})</h2>
+                <p>${searchResult.currency}</p>
             </div>
             <p className="info">
-                { }
+                {searchResult.exchangeShortName} - {searchResult.stockExchange}
             </p>
         </div>
     )
