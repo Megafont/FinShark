@@ -1,18 +1,22 @@
 import React, { ChangeEvent, SyntheticEvent, useState } from 'react'
 import "./Search.css"
 
-interface Props {
-    onClick: (e: SyntheticEvent) => void;
+interface Props
+{
+    onSearchSubmit: (e: SyntheticEvent) => void;
     search: string | undefined;
-    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Search: React.FC<Props> = ({ onClick, search, handleChange }: Props): JSX.Element => {
+const Search: React.FC<Props> = ({ onSearchSubmit, search, handleSearchChange }: Props): JSX.Element =>
+{
     return (
-        <div>
-            <input value={search} onChange={(e) => handleChange(e)}></input>
-            <button onClick={(e) => onClick(e)} />
-        </div>
+        <>
+            {/* The tag above is a "fragment" and ends with a closing </> further down.*/}
+            <form onSubmit={onSearchSubmit}>
+                <input value={search} onChange={handleSearchChange} />
+            </form>
+        </>
     );
 }
 
